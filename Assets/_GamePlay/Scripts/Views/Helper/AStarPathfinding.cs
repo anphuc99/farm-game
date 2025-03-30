@@ -92,7 +92,7 @@ namespace Views
                     {
                         Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
                         // Kiểm tra xem vị trí này có bị che bởi vật cản không (sử dụng Physics2D cho game 2D)
-                        bool walkable = !(Physics2D.OverlapCircle(worldPoint, nodeRadius, unwalkableMask));
+                        bool walkable = !(Physics2D.Raycast(worldPoint, worldPoint, unwalkableMask));
                         grid[x, y] = new Node(walkable, worldPoint, x, y);
                     }
                 }
@@ -122,6 +122,7 @@ namespace Views
         public List<Node> FindPath(Vector3 startPos, Vector3 targetPos)
         {
             Node startNode = NodeFromWorldPoint(startPos);
+            startNode.gCost = 0;
             Node targetNode = NodeFromWorldPoint(targetPos);
 
             // Nếu target không walkable, tìm node walkable gần nhất
@@ -145,6 +146,7 @@ namespace Views
                 if (nearestWalkable != null)
                 {
                     startNode = nearestWalkable;
+                    startNode.gCost = 0;
                 }
                 else
                 {
@@ -319,7 +321,7 @@ namespace Views
 
         void OnDrawGizmos()
         {
-            return;
+            //return;
             // Vẽ khung giới hạn của grid
             Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 1));
 
