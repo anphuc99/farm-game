@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee9fbdba17937647a34ac39524484b8, type: 3}
+  m_Name: AgricultureData
+  m_EditorClassIdentifier: 
+  items:
+  - itemID: 1001
+    junior1: {fileID: 328502618029910641, guid: 1bd626d80a65c5c4bb5002f28633496c, type: 3}
+    junior2: {fileID: 6401842777560126284, guid: 8ecb2b322325ba94aa0b4cd05ab9c89b, type: 3}
+    mature: {fileID: 2824169615751751886, guid: d968b106abfe80749aea658545d3577b, type: 3}
+    dead: {fileID: 4825894733977024538, guid: b00c33662c681c548a72733e90e3701c, type: 3}
+  - itemID: 1002
+    junior1: {fileID: 846755170118513068, guid: 38b50856cb18ca54c8e5a3de0293a957, type: 3}
+    junior2: {fileID: 5297953201236540528, guid: 6fd2744b42e37e74c86b1d9cc19d0e96, type: 3}
+    mature: {fileID: 7573770638029495169, guid: 975dffdfb8d7dbb47924f6d345dcdd39, type: 3}
+    dead: {fileID: 123389431434248338, guid: 432fb07fbe6e37245b377180136a9fe8, type: 3}
+  - itemID: 1003
+    junior1: {fileID: 2910969750622273333, guid: 3129ae9d4c2550f428490959e25b2564, type: 3}
+    junior2: {fileID: 2910969750622273333, guid: 3129ae9d4c2550f428490959e25b2564, type: 3}
+    mature: {fileID: 7299002207200279999, guid: a8cdbff085f758747aebeba683a4ed52, type: 3}
+    dead: {fileID: 9142411823110412689, guid: 1fe384879a8be1347a9e6be393331e00, type: 3}
+  - itemID: 1004
+    junior1: {fileID: 2470565940278983606, guid: a4681a8abf5db254a9abd3c2e2e0697e, type: 3}
+    junior2: {fileID: 1488863331925385850, guid: 90c46d2814cc98e41b45f4502d7dd1c8, type: 3}
+    mature: {fileID: 1886576667833987745, guid: de484786d2e83f547bc5434286ea541f, type: 3}
+    dead: {fileID: 1541122225288829143, guid: d343c11ed2c2ac24fb539ff61eda8fdb, type: 3}
