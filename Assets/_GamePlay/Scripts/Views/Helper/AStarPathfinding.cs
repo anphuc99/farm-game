@@ -6,16 +6,15 @@ namespace Views
 {
     public class Node
     {
-        public bool walkable;             // Có thể đi qua được hay không
-        public Vector3 worldPosition;     // Vị trí thế giới của node
-        public int gridX;                 // Chỉ số X trên lưới
-        public int gridY;                 // Chỉ số Y trên lưới
+        public bool walkable;
+        public Vector3 worldPosition;
+        public int gridX;
+        public int gridY;
 
-        public int gCost;                 // Chi phí từ điểm bắt đầu đến node này
-        public int hCost;                 // Ước tính chi phí từ node này đến đích
-        public int fCost { get { return gCost + hCost; } } // Tổng chi phí
-
-        public Node parent;               // Node cha, dùng để dựng lại đường đi
+        public int gCost = int.MaxValue; // Khởi tạo chi phí lớn
+        public int hCost;
+        public int fCost { get { return gCost + hCost; } }
+        public Node parent;
 
         public Node(bool _walkable, Vector3 _worldPosition, int _gridX, int _gridY)
         {
@@ -24,7 +23,20 @@ namespace Views
             gridX = _gridX;
             gridY = _gridY;
         }
+
+        public override bool Equals(object obj)
+        {
+            Node other = obj as Node;
+            if (other == null) return false;
+            return gridX == other.gridX && gridY == other.gridY;
+        }
+
+        public override int GetHashCode()
+        {
+            return gridX * 397 ^ gridY;
+        }
     }
+
     public class AStarPathfinding : MonoBehaviour
     {
         public static AStarPathfinding Instance;
@@ -127,16 +139,15 @@ namespace Views
                 }
             }
 
-            if(!startNode.walkable)
+            if (!startNode.walkable)
             {
-                Node nearestWalkable = FindNearestWalkableNode(targetNode);
+                Node nearestWalkable = FindNearestWalkableNode(startNode);
                 if (nearestWalkable != null)
                 {
                     startNode = nearestWalkable;
                 }
                 else
                 {
-                    // Nếu không có node nào walkable, trả về null hoặc danh sách rỗng
                     return null;
                 }
             }

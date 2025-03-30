@@ -384,13 +384,25 @@ namespace Controllers
             return StatusController.AgricultureMature;
         }
 
-        private static long GetTimeToMaturity(ItemData itemData)
+        public static long GetTimeToMaturity(int itemId)
+        {
+            ItemData itemData = ItemDatas.Instance.items.Find(x=>x.id == itemId);
+            return GetTimeToMaturity(itemData);
+        }
+
+        public static long GetProductionTime(int itemId)
+        {
+            ItemData itemData = ItemDatas.Instance.items.Find(x => x.id == itemId);
+            return GetProductionTime(itemData);
+        }
+
+        public static long GetTimeToMaturity(ItemData itemData)
         {
             Player player = Collection.LoadModel<Player>();
             return (long)Mathf.Max(itemData.timeToMaturity / (1f + 0.1f * (player.level.Value)),1);
         }
 
-        private static long GetProductionTime(ItemData itemData)
+        public static long GetProductionTime(ItemData itemData)
         {
             Player player = Collection.LoadModel<Player>();
             return (long)Mathf.Max(itemData.productionTime / (1f + 0.1f * (player.level.Value)),1);

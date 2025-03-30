@@ -116,7 +116,7 @@ namespace Controllers
         }
 
         public static void AddItemInBag(int idItem, int amount)
-        {
+        {            
             Player player = Collection.LoadModel<Player>();
             var bagItems = player.bagItems;
             var bagItem = bagItems.Items.Find(x => x.id == idItem);
@@ -130,12 +130,15 @@ namespace Controllers
             }
             else
             {
-                bagItem = new BagItem()
+                if(amount > 0)
                 {
-                    id = idItem,
-                    amount = new BindableAntiCheat<int>(amount),
-                };
-                player.bagItems.Add(bagItem);
+                    bagItem = new BagItem()
+                    {
+                        id = idItem,
+                        amount = new BindableAntiCheat<int>(amount),
+                    };
+                    player.bagItems.Add(bagItem);
+                }
             }
             Collection.SaveModel(player);
         }
