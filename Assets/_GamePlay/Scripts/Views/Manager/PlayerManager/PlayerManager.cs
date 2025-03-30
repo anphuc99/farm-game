@@ -74,7 +74,7 @@ namespace Views
             int countWorkerWorking = 0;
             foreach(var worker in workers.Items)
             {
-                if(worker.stateWorker.Value == StateWorker.None)
+                if(worker.stateWorker.Value != StateWorker.None)
                 {
                     countWorkerWorking++;
                 }

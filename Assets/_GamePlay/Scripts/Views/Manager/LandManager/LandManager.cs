@@ -90,7 +90,7 @@ namespace Views
             }
 
             player.lands.OnBind(OnAddLand);
-            await Task.Yield();
+            await Task.Delay(300);
             AStarPathfinding.Instance.CreateGrid();
             isSetupComplete = true;
         }

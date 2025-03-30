@@ -26,7 +26,7 @@ namespace Views
             }
 
             workers.OnBind(OnChangeWorker);
-        }
+        }        
 
         private void OnChangeWorker(int index, Worker worker, BindingStatus status)
         {

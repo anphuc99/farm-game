@@ -105,7 +105,10 @@ public static class WorkerBehavior
         {
             case StateWorker.Cultivation:
                 var bagItem = player.bagItems.Items.Find(x=>x.Type == TypeItem.Seeds);
-                PlayerController.Cultivation(bagItem.id, worker.workingInLand);
+                if (bagItem != null)
+                {
+                    PlayerController.Cultivation(bagItem.id, worker.workingInLand);
+                }
                 break;
             case StateWorker.Harvest:
                 PlayerController.Harvest(worker.workingInLand);

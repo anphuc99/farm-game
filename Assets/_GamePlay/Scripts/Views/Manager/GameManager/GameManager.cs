@@ -33,8 +33,11 @@ namespace Views
             Player player = Collection.LoadModel<Player>();
             if(player.lastTimePlayGame != -1)
             {
+                DataHelper.Instance.blockSave = true;
                 LoadingManager.Instance.SetProgress(20, 2);
-                await WorkerController.AutoWork();                
+                await WorkerController.AutoWork();   
+                DataHelper.Instance.blockSave = false;
+                DataHelper.Instance.Save();
             }            
             SceneManager.LoadSceneAsync(SceneConstant.GAME_PLAY);
             await LoadingManager.Instance.SetProgress(100, 1);

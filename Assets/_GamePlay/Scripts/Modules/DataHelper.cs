@@ -27,6 +27,8 @@ namespace Modules
 
         public bool isNew;
 
+        public bool blockSave;
+
         private static DataHelper instance;
 
         private JObject _datas = new JObject();
@@ -38,8 +40,9 @@ namespace Modules
         // Lưu dữ liệu xuống file (đã mã hóa AES)
         public void Save()
         {
+            if (blockSave) return;
             try
-            {
+            {                
                 string json = _datas.ToString(Formatting.None);
                 string encrypted = EncryptionHelper.Encrypt(json);
                 File.WriteAllText(SaveFilePath, encrypted);
@@ -144,6 +147,7 @@ namespace Modules
 
         private async void AutoSave()
         {
+            if (blockSave) return;
             await Task.Delay(TimeSpan.FromSeconds(_autoSaveDelay));
             Save();
             _isDirty = false;

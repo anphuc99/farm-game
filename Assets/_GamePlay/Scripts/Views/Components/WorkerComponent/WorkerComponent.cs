@@ -69,11 +69,11 @@ namespace Views
         public async void SetState()
         {
             StateWorker stateWorker = _worker.stateWorker.Value;
-            PlayerManager.Instance.UpdateWorkerUI();
             if (_curWorkInLand == _worker.workingInLand)
             {
                 return;
             }
+            PlayerManager.Instance.UpdateWorkerUI();
             _curWorkInLand = _worker.workingInLand;
             if (stateWorker == StateWorker.None)
             {
