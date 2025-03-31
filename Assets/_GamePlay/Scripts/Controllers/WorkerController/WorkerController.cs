@@ -57,15 +57,15 @@ namespace Controllers
 
             WorkerOptimaze workerOptimazeJob = new WorkerOptimaze();
 
-            List<BagItem> bagSeeds = player.bagItems.Items.Where(x=>x.Type == TypeItem.Seeds).ToList();
+            List<ItemData> itemSeeds = ItemDatas.Instance.items.Where(x=>x.type == TypeItem.Seeds).ToList();
             var workers = player.workers.Items;
             var lands = player.lands.Items;
             long timeStampNow = DateTimeHelper.GetTimeStampNow();
             long lastTimePlayGame = player.lastTimePlayGame;
             long timeGameBreak = timeStampNow - lastTimePlayGame;
 
-            workerOptimazeJob.bagItems = new BagItemStruct[bagSeeds.Count];
-            workerOptimazeJob.bagNewItem = new BagItemStruct[bagSeeds.Count];
+            workerOptimazeJob.bagItems = new BagItemStruct[itemSeeds.Count];
+            workerOptimazeJob.bagNewItem = new BagItemStruct[itemSeeds.Count];
             workerOptimazeJob.workers = new WorkerStruct[workers.Count];
             workerOptimazeJob.lands = new LandStruct[lands.Count];
             workerOptimazeJob.player = new PlayerStruct() { level = player.level.Value };
@@ -74,21 +74,26 @@ namespace Controllers
             workerOptimazeJob.workerWorkDuration = GameSetting.Instance.workerWorkDuration;
 
 
-            for (int i = 0; i < bagSeeds.Count; i++)
+            for (int i = 0; i < itemSeeds.Count; i++)
             {
-                var bag = bagSeeds[i];
-                ItemData itemData = ItemDatas.Instance.items.Find(x=>x.id == bag.id);
+                var itemData = itemSeeds[i];
                 var bagItemStruct = new BagItemStruct()
                 {
-                    id = bag.id,
+                    id = itemData.id,
                     indexBag = i,
-                    amount = bag.amount.Value,
                     timeToMaturity = itemData.timeToMaturity,
                     productionTime = itemData.productionTime,
                     productingLimit = itemData.productingLimit,
                     timeUntilDeathAfterLimit = itemData.timeUntilDeathAfterLimit,
                     harvestId = itemData.harvestId,
                 };
+
+                var bag = player.bagItems.Items.Find(x=>x.id == itemData.id);                
+                if(bag != null)
+                {
+                    bagItemStruct.amount = bag.amount.Value;
+                }
+
                 workerOptimazeJob.bagItems[i] = bagItemStruct;
 
                 var bagNewItem = new BagItemStruct()
@@ -119,12 +124,29 @@ namespace Controllers
                 LandStruct landStruct = new LandStruct();
                 landStruct.id = land.id;
                 landStruct.index = i;
-                if(land.Agriculture != null)
+
+                if (land.Agriculture != null)
                 {
+                    BagItemStruct bagItem = new BagItemStruct();
+
+                    foreach (var bag in workerOptimazeJob.bagItems)
+                    {
+                        if (land.Agriculture.id == bag.id)
+                        {
+                            bagItem = bag;
+                        }
+                    }
+
                     landStruct.hasAgriculture = true;
                     landStruct.agricultureId = land.Agriculture.id;
                     landStruct.cultivationTime = land.Agriculture.cultivationTime;
                     landStruct.amountProductPicked = land.Agriculture.amountProductPicked.Value;
+
+                    landStruct.timeToMaturity = bagItem.timeToMaturity;
+                    landStruct.productionTime = bagItem.productionTime;
+                    landStruct.productingLimit = bagItem.productingLimit;
+                    landStruct.harvestId = bagItem.harvestId;
+                    landStruct.indexBag = bagItem.indexBag;
                 }
                 workerOptimazeJob.lands[i] = landStruct;
             }

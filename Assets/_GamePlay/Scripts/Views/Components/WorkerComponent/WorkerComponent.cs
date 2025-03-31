@@ -72,20 +72,7 @@ namespace Views
             }
             PlayerManager.Instance.UpdateWorkerUI();
             _curWorkInLand = _worker.workingInLand;
-            if (stateWorker == StateWorker.None)
-            {
-                Vector3 startPos = transform.position;
-                while (true)
-                {
-                    paths = await Task.Run(() => AStarPathfinding.Instance.FindPathAsVector3(startPos, target));
-                    if (paths.Count < 1000)
-                    {
-                        break;
-                    }
-                }
-                target = Vector3.zero;
-            }
-            else
+            if (stateWorker != StateWorker.None)
             {
                 await Task.Delay(500);
                 Vector3 target = LandManager.Instance.GetLandComponentByIndex(_worker.workingInLand).transform.position;
