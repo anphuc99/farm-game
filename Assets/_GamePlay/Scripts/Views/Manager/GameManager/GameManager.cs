@@ -15,13 +15,13 @@ namespace Views
 
         private float _curTimeUpdateLastPlayGame = TIME_UPDATE_LASTEPLAYGAME;
 
-#if UNITY_EDITOR
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        public static void BeforLoadGame()
-        {
-            SceneManager.LoadScene(0);
-        }
-#endif
+//#if UNITY_EDITOR
+//        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+//        public static void BeforLoadGame()
+//        {
+//            SceneManager.LoadScene(0);
+//        }
+//#endif
 
         private void Awake()
         {

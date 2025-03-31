@@ -79,7 +79,7 @@ namespace Views
                 Vector3 startPos = transform.position;
                 while (true)
                 {
-                    paths = await Task.Run(() => AStarPathfinding.Instance.FindPathAsVector3(startPos, target));
+                    paths = await Task.Run(() => Pathfinding.Instance.FindPathAsVector3(startPos, target));
                     if (paths.Count < 1000)
                     {
                         break;

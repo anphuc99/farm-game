@@ -922,7 +922,7 @@ GameObject:
   - component: {fileID: 1596845403}
   - component: {fileID: 1596845402}
   m_Layer: 0
-  m_Name: AStar
+  m_Name: PathfindingHelper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -943,8 +943,8 @@ MonoBehaviour:
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 55
-  gridWorldSize: {x: 35, y: 25}
-  nodeRadius: 0.1
+  gridWorldSize: {x: 19.67, y: 25}
+  nodeUnit: 0.1
 --- !u!4 &1596845403
 Transform:
   m_ObjectHideFlags: 0
@@ -954,7 +954,7 @@ Transform:
   m_GameObject: {fileID: 1596845401}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalPosition: {x: -7.71, y: 0, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

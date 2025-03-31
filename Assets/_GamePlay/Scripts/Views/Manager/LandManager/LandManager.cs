@@ -94,7 +94,7 @@ namespace Views
 
             player.lands.OnBind(OnAddLand);
             await Task.Delay(300);
-            AStarPathfinding.Instance.CreateGrid();
+            Pathfinding.Instance.CreateGrid();
             isSetupComplete = true;
         }
 
@@ -104,7 +104,7 @@ namespace Views
             {
                 AddLand(land, index);
                 await Task.Delay(300);
-                AStarPathfinding.Instance.UpdateGrid();
+                Pathfinding.Instance.UpdateGrid();
             }
         }
 
