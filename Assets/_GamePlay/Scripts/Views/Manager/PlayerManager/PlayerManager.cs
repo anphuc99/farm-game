@@ -40,14 +40,14 @@ namespace Views
             Instance = null;
         }
 
-        private void OnChangeCoin(int coin)
+        private void OnChangeCoin(int money)
         {
-            _txtCoin.text = coin.ToString();
+            _txtCoin.text = money.ToString("N0");
         }
 
         private void OnChangeLevel(int level)
         {
-            _txtLevel.text = level.ToString();
+            _txtLevel.text = (level + 1).ToString();
         }
 
         public void UpdateLandsUI()
@@ -148,12 +148,12 @@ namespace Views
             });
         }
 
-        public void OnAddWorker()
+        public void OnHireWorker()
         {
             PopupManager.Instance.ShowPopup(PopupConstant.POPUP_NOTIFICATION_YES_NO, new NoticationYesNoParam()
             {
                 title = TextConstant.NOTIFICATION,
-                description = string.Format(TextConstant.EXPAND_LAND, GameSetting.Instance.expandLandCost),
+                description = string.Format(TextConstant.HIRE_WORKER, GameSetting.Instance.expandLandCost),
                 btnYes = new NoticationYesNoParam.btn()
                 {
                     text = TextConstant.YES,
@@ -166,7 +166,7 @@ namespace Views
                             PopupManager.Instance.ShowPopup(PopupConstant.POPUP_NOTIFICATION, new NoticationParam()
                             {
                                 title = TextConstant.NOTIFICATION,
-                                description = TextConstant.EXPAND_LAND_SUCCESS,
+                                description = TextConstant.HIRE_WORKER_SUCCESS,
                                 button = new NoticationParam.btn()
                                 {
                                     text = TextConstant.OK,

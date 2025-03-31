@@ -1293,7 +1293,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3549725100236036502}
         m_TargetAssemblyTypeName: Views.PlayerManager, View
-        m_MethodName: OnAddWorker
+        m_MethodName: OnHireWorker
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

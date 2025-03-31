@@ -53,7 +53,7 @@ namespace Views
         public void UpdateUI()
         {
             Player player = PlayerController.GetPlayer();
-            _txtLevel.text = string.Format(TextConstant.LEVEL, player.level.Value);
+            _txtLevel.text = string.Format(TextConstant.LEVEL, player.level.Value + 1);
             _txtDescription.text = string.Format(TextConstant.PRODUCTIVITY_INCREASED, player.level.Value * 10);
         }
 

@@ -28,6 +28,7 @@ namespace Views
         public const string EXPAND_LAND = "Do you want to expand the land for {0} price?";
         public const string HIRE_WORKER = "Do you want to hire workers at price {0}?";
         public const string EXPAND_LAND_SUCCESS = "Purchased successfully please check your bag";
+        public const string HIRE_WORKER_SUCCESS = "Hire Workers Successfully";
         public const string YES = "Yes";
         public const string NO = "No";
         public const string OK = "Ok";
