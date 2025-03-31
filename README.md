@@ -18,10 +18,6 @@
   - Liên kết với Model thông qua hệ thống binding được xây dựng bởi các lớp **Bindable** và **BindableList**.
   - Tự động cập nhật giao diện khi Model thay đổi dữ liệu nhờ hệ thống binding.
 
-### Hệ Thống Anti-Cheat
-- **BindableAntiCheat**:  
-  - Được tích hợp trong hệ thống binding để phát hiện và ngăn chặn các hành vi gian lận từ người chơi (ví dụ: cheat vàng, cheat level).
-
 ---
 
 ## 2. Các Module Hỗ Trợ và Logic Nền Tảng
