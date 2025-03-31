@@ -1,13 +1,10 @@
-﻿using Codice.CM.Common;
-using Controllers;
-using DG.Tweening;
+﻿using Controllers;
 using Models;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Views
 {
@@ -78,7 +75,14 @@ namespace Views
             if (stateWorker == StateWorker.None)
             {
                 Vector3 startPos = transform.position;
-                paths = await Task.Run(() => AStarPathfinding.Instance.FindPathAsVector3(startPos, Vector3.zero));
+                while (true)
+                {
+                    paths = await Task.Run(() => AStarPathfinding.Instance.FindPathAsVector3(startPos, target));
+                    if (paths.Count < 1000)
+                    {
+                        break;
+                    }
+                }
                 target = Vector3.zero;
             }
             else
@@ -86,8 +90,16 @@ namespace Views
                 await Task.Delay(500);
                 Vector3 target = LandManager.Instance.GetLandComponentByIndex(_worker.workingInLand).transform.position;
                 Vector3 startPos = transform.position;
-                paths = await Task.Run(() => AStarPathfinding.Instance.FindPathAsVector3(startPos, target));
+                while (true)
+                {
+                    paths = await Task.Run(() => AStarPathfinding.Instance.FindPathAsVector3(startPos, target));
+                    if (paths.Count < 1000)
+                    {
+                        break;
+                    }
+                }
                 this.target = target;
+
             }
         }
 

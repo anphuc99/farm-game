@@ -12,5 +12,6 @@ namespace Views
         public const string ON_LAND_DESELECTED = "ON_LAND_DESELECTED";
         public const string ON_PRODUCT_SELECTED = "ON_PRODUCT_SELECTED";
         public const string ON_PRODUCT_DESELECTED = "ON_PRODUCT_DESELECTED";
+        public const string ON_COMPLETE_GAME = "ON_COMPLETE_GAME";
     }
 }

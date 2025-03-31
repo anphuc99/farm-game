@@ -57,7 +57,7 @@ namespace Views
             {
                 _imgAvatar.gameObject.SetActive(true);
                 _itemData = itemData;
-                _imgAvatar.sprite = itemData.avatar;
+                _imgAvatar.sprite = SpriteHelper.Instance.GetSprite(itemData.avatar);
                 _imgAvatar.SetNativeSize();
                 _sliderNumber.minValue = 1;
                 _sliderNumber.maxValue = bagItem.amount.Value;

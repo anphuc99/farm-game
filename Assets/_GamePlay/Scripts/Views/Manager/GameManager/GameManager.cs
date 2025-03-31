@@ -1,6 +1,7 @@
 using Controllers;
 using Models;
 using Modules;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,14 @@ namespace Views
         private const float TIME_UPDATE_LASTEPLAYGAME = 60;
 
         private float _curTimeUpdateLastPlayGame = TIME_UPDATE_LASTEPLAYGAME;
+
+#if UNITY_EDITOR
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static void BeforLoadGame()
+        {
+            SceneManager.LoadScene(0);
+        }
+#endif
 
         private void Awake()
         {
@@ -31,7 +40,7 @@ namespace Views
             var gameSettin = GameSetting.Instance;
             LoadingManager.Instance.ShowLoading();
             Player player = Collection.LoadModel<Player>();
-            if(player.lastTimePlayGame != -1)
+            if(player.lastTimePlayGame != -1 && player.money.Value < GameSetting.Instance.moneyToCompleteGame)
             {
                 DataHelper.Instance.blockSave = true;
                 LoadingManager.Instance.SetProgress(20, 2);
@@ -43,6 +52,8 @@ namespace Views
             await LoadingManager.Instance.SetProgress(100, 1);
             LoadingManager.Instance.HideLoading();
             player.lastTimePlayGame = DateTimeHelper.GetTimeStampNow();
+            player.money.OnBind(CompleteGame);
+            CompleteGame(player.money.Value);
             Collection.SaveModel(player);
         }
         
@@ -61,9 +72,31 @@ namespace Views
             }
         }
 
+        private void OnDestroy()
+        {
+            Player player = Collection.LoadModel<Player>();
+            player.money.UnBind(CompleteGame);
+        }
+
         private void OnApplicationQuit()
         {
             DataHelper.Instance.Save();
+        }
+
+        private void CompleteGame(int money)
+        {
+            if(money >= GameSetting.Instance.moneyToCompleteGame)
+            {
+                EventManager.Emit(EventConstant.ON_COMPLETE_GAME, true);
+            }
+        }
+
+        public void ResetGame()
+        {
+            DataHelper.Instance.ClearData();
+            Collection.Clear();
+            SceneManager.LoadScene(0);
+            Start();
         }
     }
 }

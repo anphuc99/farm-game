@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Views
 {
     public class DontDestroyOnLoadHelper : MonoBehaviour
-    {
+    {        
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);

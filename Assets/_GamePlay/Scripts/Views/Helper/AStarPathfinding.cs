@@ -262,10 +262,13 @@ namespace Views
             List<Node> path = new List<Node>();
             Node currentNode = endNode;
 
-            while (currentNode != startNode)
+            int loop = 0;
+
+            while (currentNode != startNode && loop <= 1000)
             {
                 path.Add(currentNode);
                 currentNode = currentNode.parent;
+                loop++;
             }
             path.Reverse();
             return path;
@@ -319,28 +322,28 @@ namespace Views
             return neighbors;
         }
 
-        void OnDrawGizmos()
-        {
-            //return;
-            // Vẽ khung giới hạn của grid
-            Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 1));
+        //void OnDrawGizmos()
+        //{
+        //    //return;
+        //    // Vẽ khung giới hạn của grid
+        //    Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 1));
 
-            // Nếu grid đã được tạo, vẽ các node
-            if (grid != null)
-            {
-                for (int x = 0; x < gridSizeX; x++)
-                {
-                    for (int y = 0; y < gridSizeY; y++)
-                    {
-                        Node node = grid[x, y];
-                        // Chọn màu: trắng nếu có thể đi được, đỏ nếu không thể đi
-                        Gizmos.color = (node.walkable) ? Color.white : Color.red;
-                        // Vẽ một hình hộp nhỏ tại vị trí của node
-                        Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - 0.1f));                        
-                    }
-                }
-            }
-        }
+        //    // Nếu grid đã được tạo, vẽ các node
+        //    if (grid != null)
+        //    {
+        //        for (int x = 0; x < gridSizeX; x++)
+        //        {
+        //            for (int y = 0; y < gridSizeY; y++)
+        //            {
+        //                Node node = grid[x, y];
+        //                // Chọn màu: trắng nếu có thể đi được, đỏ nếu không thể đi
+        //                Gizmos.color = (node.walkable) ? Color.white : Color.red;
+        //                // Vẽ một hình hộp nhỏ tại vị trí của node
+        //                Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - 0.1f));                        
+        //            }
+        //        }
+        //    }
+        //}
 
     }
 }

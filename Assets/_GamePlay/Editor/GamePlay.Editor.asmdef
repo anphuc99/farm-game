@@ -1,7 +1,9 @@
 {
     "name": "GamePlay.Editor",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:e3d229eadf0ca9f488b54a7a5bd5d0e6"
+    ],
     "includePlatforms": [
         "Editor"
     ],

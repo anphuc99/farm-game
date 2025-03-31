@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "idItem": 1001,
+      "price": 30,
+      "quantityPerPurchase": 10
+    },
+    {
+      "idItem": 1002,
+      "price": 50,
+      "quantityPerPurchase": 10
+    },
+    {
+      "idItem": 1003,
+      "price": 100,
+      "quantityPerPurchase": 1
+    },
+    {
+      "idItem": 1004,
+      "price": 400,
+      "quantityPerPurchase": 10
+    }
+  ]
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,7 @@ public class ShopItem
     public int quantityPerPurchase;
 }
 
-[CreateAssetMenu(fileName = "ShopData", menuName = "data/shopData")]
-public class ShopData : ScriptableObject
+public class ShopData
 {
     public static ShopData Instance
     {
@@ -20,7 +20,8 @@ public class ShopData : ScriptableObject
         {
             if(instance == null)
             {
-                instance = Resources.Load<ShopData>("ShopData");
+                string json = Resources.Load<TextAsset>("ShopData").text;
+                instance = JsonConvert.DeserializeObject<ShopData>(json);
             }
             return instance;
         }

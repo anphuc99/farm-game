@@ -37,6 +37,7 @@ namespace Views
         {
             Player player = Collection.LoadModel<Player>();
             player.money.Value += money;
+            Collection.SaveModel(player);   
         }
     }
 }

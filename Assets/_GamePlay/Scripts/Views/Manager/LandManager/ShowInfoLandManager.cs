@@ -101,7 +101,7 @@ namespace Views
         {
             var itemData = ItemDatas.Instance.items.Find(x => x.id == land.Agriculture.id);
             itemData = ItemDatas.Instance.items.Find(x => x.id == itemData.harvestId);
-            _avatar.sprite = itemData.avatar;
+            _avatar.sprite = SpriteHelper.Instance.GetSprite(itemData.avatar);
             _avatar.SetNativeSize();
             _txtTitle.text = TextConstant.TIME_TO_MATURE;
             var progress = LandController.GetProgressMaturity(indexLand);
@@ -115,7 +115,7 @@ namespace Views
         {
             var itemData = ItemDatas.Instance.items.Find(x => x.id == land.Agriculture.id);
             itemData = ItemDatas.Instance.items.Find(x => x.id == itemData.harvestId);
-            _avatar.sprite = itemData.avatar;
+            _avatar.sprite = SpriteHelper.Instance.GetSprite(itemData.avatar);
             _avatar.SetNativeSize();
             int production = LandController.GetAmountProduct(indexLand);
             _txtTitle.text = string.Format(TextConstant.PRODUCTION, production);
@@ -139,7 +139,7 @@ namespace Views
         {
             var itemData = ItemDatas.Instance.items.Find(x => x.id == land.Agriculture.id);
             itemData = ItemDatas.Instance.items.Find(x => x.id == itemData.harvestId);
-            _avatar.sprite = itemData.avatar;
+            _avatar.sprite = SpriteHelper.Instance.GetSprite(itemData.avatar);
             _avatar.SetNativeSize();
             int production = LandController.GetAmountProduct(indexLand);
             _txtTitle.text = string.Format(TextConstant.PRODUCTION_LIMITED, production);
@@ -163,7 +163,7 @@ namespace Views
         {
             var itemData = ItemDatas.Instance.items.Find(x => x.id == land.Agriculture.id);
             itemData = ItemDatas.Instance.items.Find(x => x.id == itemData.harvestId);
-            _avatar.sprite = itemData.avatar;
+            _avatar.sprite = SpriteHelper.Instance.GetSprite(itemData.avatar);
             _txtTitle.text = TextConstant.AGRICULTURE_DEAD;
             _progress.fillAmount = 0;
             _txtTime.text = "00m 00s";

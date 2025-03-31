@@ -23,6 +23,11 @@ namespace Views
             _positionTransform.Add(positionType, transform);
         }
 
+        private void OnDestroy()
+        {
+            _positionTransform.Remove(positionType);
+        }
+
         public static Transform GetPosition(PositionType positionType)
         {
             if (_positionTransform.ContainsKey(positionType))

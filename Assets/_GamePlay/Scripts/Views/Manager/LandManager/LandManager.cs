@@ -75,6 +75,9 @@ namespace Views
 
         private void OnDestroy()
         {
+            EventManager.UnResgister(EventConstant.ON_LAND_SELECTED, OnLandSelected);
+            EventManager.UnResgister(EventConstant.ON_LAND_DESELECTED, OnLandDeselected);
+
             Instance = null;
             Player player = PlayerController.GetPlayer();
             player.lands.UnBind(OnAddLand);

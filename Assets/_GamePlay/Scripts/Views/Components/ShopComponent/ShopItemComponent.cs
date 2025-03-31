@@ -21,7 +21,7 @@ namespace Views
             _shopManager = shopManager;
 
             ItemData itemData = ItemDatas.Instance.items.Find(x=>x.id == shopItem.idItem);
-            _imgAvatar.sprite = itemData.avatar;
+            _imgAvatar.sprite = SpriteHelper.Instance.GetSprite(itemData.avatar);
             _txtMoney.text = shopItem.price.ToString();        
             _txtQuantityPerPurchase.text = "+" + shopItem.quantityPerPurchase.ToString();
         }        

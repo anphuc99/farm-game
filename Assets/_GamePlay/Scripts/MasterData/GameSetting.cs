@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +10,7 @@ public class InitItem
     public int amount;
 }
 
-[CreateAssetMenu(fileName = "GameSetting", menuName = "data/GameSetting")]
-public class GameSetting : ScriptableObject
+public class GameSetting 
 {
     public static GameSetting Instance
     {
@@ -18,7 +18,8 @@ public class GameSetting : ScriptableObject
         {
             if(instance == null)
             {
-                instance = Resources.Load<GameSetting>("GameSetting");
+                string json = Resources.Load<TextAsset>("GameSetting").text;
+                instance = JsonConvert.DeserializeObject<GameSetting>(json);
             }
             return instance;
         }
@@ -37,5 +38,7 @@ public class GameSetting : ScriptableObject
     public int expandLandCost;
     public int hireWorkCost;
     public int workerWorkDuration;
+
+    public int moneyToCompleteGame;
 }
 

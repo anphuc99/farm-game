@@ -1,0 +1,121 @@
+{
+  "items": [
+    {
+      "id": 1001,
+      "type": 0,
+      "name": "Tomato Seed",
+      "avatar": "Tomato Seed",
+      "description": "x",
+      "timeToMaturity": 60,
+      "productionTime": 600,
+      "productingLimit": 40,
+      "timeUntilDeathAfterLimit": 3600,
+      "harvestId": 2001,
+      "sellingPrice": 0
+    },
+    {
+      "id": 1002,
+      "type": 0,
+      "name": "Blueberry Seed",
+      "avatar": "Blueberry Seed",
+      "description": "x",
+      "timeToMaturity": 60,
+      "productionTime": 900,
+      "productingLimit": 40,
+      "timeUntilDeathAfterLimit": 3600,
+      "harvestId": 2002,
+      "sellingPrice": 0
+    },
+    {
+      "id": 1003,
+      "type": 0,
+      "name": "Cow",
+      "avatar": "Cow",
+      "description": "x",
+      "timeToMaturity": 80,
+      "productionTime": 1800,
+      "productingLimit": 100,
+      "timeUntilDeathAfterLimit": 3600,
+      "harvestId": 2003,
+      "sellingPrice": 0
+    },
+    {
+      "id": 1004,
+      "type": 0,
+      "name": "Strawberry Seed",
+      "avatar": "Strawberry Seed",
+      "description": "x",
+      "timeToMaturity": 60,
+      "productionTime": 300,
+      "productingLimit": 20,
+      "timeUntilDeathAfterLimit": 3600,
+      "harvestId": 2004,
+      "sellingPrice": 0
+    },
+    {
+      "id": 2001,
+      "type": 1,
+      "name": "Tomato",
+      "avatar": "Tomato",
+      "description": "Juicy red round fruit with smooth skin and seeds.",
+      "timeToMaturity": 0,
+      "productionTime": 0,
+      "productingLimit": 0,
+      "timeUntilDeathAfterLimit": 0,
+      "harvestId": 0,
+      "sellingPrice": 5
+    },
+    {
+      "id": 2002,
+      "type": 1,
+      "name": "Blueberry",
+      "avatar": "Blueberry",
+      "description": "Small round blue-purple fruit with sweet and tangy taste.",
+      "timeToMaturity": 0,
+      "productionTime": 0,
+      "productingLimit": 0,
+      "timeUntilDeathAfterLimit": 0,
+      "harvestId": 0,
+      "sellingPrice": 8
+    },
+    {
+      "id": 2003,
+      "type": 1,
+      "name": "Milk",
+      "avatar": "Milk",
+      "description": "Metal can containing sweetened condensed milk creamy and thick.",
+      "timeToMaturity": 0,
+      "productionTime": 0,
+      "productingLimit": 0,
+      "timeUntilDeathAfterLimit": 0,
+      "harvestId": 0,
+      "sellingPrice": 15
+    },
+    {
+      "id": 2004,
+      "type": 1,
+      "name": "Strawberry",
+      "avatar": "Strawberry",
+      "description": "Red heart-shaped fruit with tiny seeds and sweet taste.",
+      "timeToMaturity": 0,
+      "productionTime": 0,
+      "productingLimit": 0,
+      "timeUntilDeathAfterLimit": 0,
+      "harvestId": 0,
+      "sellingPrice": 20
+    },
+    {
+      "id": 3001,
+      "type": 2,
+      "name": "Land",
+      "avatar": "Land",
+      "description": "x",
+      "timeToMaturity": 0,
+      "productionTime": 0,
+      "productingLimit": 0,
+      "timeUntilDeathAfterLimit": 0,
+      "harvestId": 0,
+      "sellingPrice": 0
+    }
+  ]
+}

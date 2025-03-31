@@ -43,7 +43,7 @@ namespace Views
             _bagItem = bagItem;
             _bagManager = bagManager;
             var itemData = ItemDatas.Instance.items.Find(x=>x.id == bagItem.id);
-            imgAvatar.sprite = itemData.avatar;
+            imgAvatar.sprite = SpriteHelper.Instance.GetSprite(itemData.avatar);
             imgAvatar.SetNativeSize();
             bagItem.amount.OnBind(OnAmountChange);
             OnAmountChange(bagItem.amount.Value);

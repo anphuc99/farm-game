@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ public class ItemData
     public int id;
     public TypeItem type;
     public string name;
-    public string description;
-    public Sprite avatar;
+    public string avatar;
+    public string description;    
     public int timeToMaturity;
     public int productionTime;
     public int productingLimit;
@@ -26,8 +27,8 @@ public class ItemData
     public int sellingPrice;
 }
 
-[CreateAssetMenu(fileName = "ItemDatas", menuName = "data/ItemDatas")]
-public class ItemDatas : ScriptableObject
+
+public class ItemDatas
 {
     public static ItemDatas Instance
     {
@@ -35,7 +36,10 @@ public class ItemDatas : ScriptableObject
         {
             if (instance == null)
             {
-                instance = Resources.Load<ItemDatas>("ItemDatas");
+                string json = Resources.Load<TextAsset>("ItemDatas").text;   
+                
+                instance = JsonConvert.DeserializeObject<ItemDatas>(json);
+
             }
             return instance;
         }
